@@ -62,7 +62,7 @@
          "web" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates"
       }
    },
-   "version" : "0.00.01",
+   "version" : "0.01.00",
    "x_contributors" : [
       "Erik Carlsson <info@code301.com>"
    ]
