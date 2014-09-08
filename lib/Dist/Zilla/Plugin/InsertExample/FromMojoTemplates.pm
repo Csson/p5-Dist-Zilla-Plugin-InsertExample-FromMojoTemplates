@@ -43,7 +43,7 @@ sub munge_file {
         LINE:
         foreach my $line (@lines) {
             $line =~ m{$linere};
-            warn ">>>line:>>>$line<<<";
+
             my $filename = $1;
 
             my $what = $2;
@@ -84,13 +84,10 @@ sub munge_file {
             }
 
             my $success = $newcontent =~ s{$line}{$tomunge};
-            warn ">>>>>>>$success<<<<<<<<<";
-
 
         }
 
         if($newcontent ne $content) {
-            warn '!!!!!! REPLACES CONTENT !!!!!!';
             $file->content($newcontent);
         }
 
