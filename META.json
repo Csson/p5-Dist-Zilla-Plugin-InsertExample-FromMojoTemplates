@@ -46,6 +46,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates/issues"
+      },
+      "homepage" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates.git",
+         "web" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates"
+      }
+   },
    "version" : "0.00.01",
    "x_contributors" : [
       "Erik Carlsson <info@code301.com>"
