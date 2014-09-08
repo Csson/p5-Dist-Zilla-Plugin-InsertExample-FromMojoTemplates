@@ -7,9 +7,10 @@ use 5.10.1;
 use File::Find::Rule;
 use MojoX::CustomTemplateFileParser;
 use Moose;
+use Path::Tiny;
 with 'Dist::Zilla::Role::FileMunger';
 with 'Dist::Zilla::Role::FileFinderUser' => {
-    default_finders => [qw/:InstallModules :ExecFiles]/],
+    default_finders => [':InstallModules', ':ExecFiles'],
 };
 
 has directory => (
@@ -29,43 +30,70 @@ sub munge_files {
 
 sub munge_file {
     my $self = shift;
-    my $filename = shift;
+    my $file = shift;
 
-    my $content = $filename->content;
+    my $content = $file->content;
     my $re = $self->filepattern;
-    if($content =~ m{^ # \s* EXAMPLE: \s* ($re):(.*) $}x) {
-        my $filename = $1;
-        my $what = $2;
-        $what =~ s{ }{}g;
-        $what =~ s{,,+}{,}g;
+    if($content =~ m{# \s* EXAMPLE: \s* ($re):(.*)}xm) {
+        my $linere = qr{^\s*#\s*EXAMPLE:\s*([^:]+):(.*)$};
+        my @lines = grep { m{$linere} } split /\n/ => $content;
 
-        my(@configs) = split m/,/ => $what;
+        my $newcontent = $content;
 
-        my @wanted = ();
-        my @unwanted = ();
-        my $all = 0;
+        LINE:
+        foreach my $line (@lines) {
+            $line =~ m{$linere};
+            warn ">>>line:>>>$line<<<";
+            my $filename = $1;
 
-        CONFIG:
-        foreach my $config (@configs) {
-            if($config eq 'all') {
-                $all = 1;
+            my $what = $2;
+            $what =~ s{ }{}g;
+            $what =~ s{,,+}{,}g;
+
+            my @configs = split m/,/ => $what;
+            my @wanted = ();
+            my @unwanted = ();
+            my $all = 0;
+
+            CONFIG:
+            foreach my $config (@configs) {
+                if($config eq 'all') {
+                    $all = 1;
+                }
+                elsif($config =~ m{^ (!)? (\d+) (?:-(\d+))? }x) {
+                    my $exclude = defined $1 ? 1 : 0;
+                    my $first = $2;
+                    my $second = $3 || $first;
+
+                    map { push @wanted   => $_ } ($first..$second) if !$exclude;
+                    map { push @unwanted => $_ } ($first..$second) if $exclude;
+                }
             }
-            elsif($config !~ m{^ (!) (\d+) (?:-(\d+))? }x) {
-                my $exclude = defined $1 ? 1 : 0;
-                my $first = $2;
-                my $second = $3 || $first;
 
-                map { push @wanted   => $_ } ($first..$second) if !$exclude;
-                map { push @unwanted => $_ } ($first..$second) if $exclude;
+            my $parser = MojoX::CustomTemplateFileParser->new( path => path($self->directory)->child($filename)->absolute )->parse;
+            my $testcount = $parser->test_count;
+            @wanted = (1..$testcount) if $all;
+
+            my %unwanted;
+            $unwanted{ $_ } = 1 for @unwanted;
+            @wanted = grep { !exists $unwanted{ $_ } } @wanted;
+
+            my $tomunge = '';
+            foreach my $test (@wanted) {
+                $tomunge .= $parser->exemplify($test);
             }
+
+            my $success = $newcontent =~ s{$line}{$tomunge};
+            warn ">>>>>>>$success<<<<<<<<<";
+
+
         }
-        my %wanted;
-        $wanted{ $_ } = 1 for @wanted;
-        delete $wanted{ $_ } for @unwanted;
 
-        my $structure = MojoX::CustomTemplateFileParser->new( path => path($self->directory)->child($filename)->absolute )->parse->structure;
-        use Data::Dumper;
-        warn $structure;
+        if($newcontent ne $content) {
+            warn '!!!!!! REPLACES CONTENT !!!!!!';
+            $file->content($newcontent);
+        }
+
     }
 }
 
@@ -131,7 +159,7 @@ Adds all examples in the source file. C<all> can be used by itself or combined w
 
 B<C<1>>
 
-Adds example number C<3>. In order to be able to refer to examples with numbers they must be numbered in the source file.
+Adds example number C<3>. The test number is sequential. Looping tests count as one. You can add a number as in the example to make it easier to follow.
 
 B<C<3-30>>
 
