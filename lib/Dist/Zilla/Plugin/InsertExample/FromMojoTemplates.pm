@@ -128,7 +128,7 @@ Default: C<examples/source>
 
 Where DZP::IE::FMT should look for source files.
 
-B<C<filepattern>
+B<C<filepattern>>
 
 Default: C<^\w+-\d+\.mojo$>
 
