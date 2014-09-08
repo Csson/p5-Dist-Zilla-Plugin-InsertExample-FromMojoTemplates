@@ -6,6 +6,7 @@ use 5.10.1;
 
 use File::Find::Rule;
 use MojoX::CustomTemplateFileParser;
+use Moose;
 with 'Dist::Zilla::Role::FileMunger';
 with 'Dist::Zilla::Role::FileFinderUser' => {
     default_finders => [qw/:InstallModules :ExecFiles]/],
@@ -21,8 +22,6 @@ has filepattern => (
     default => sub { qr/\w+-\d+\.mojo/ },
 );
 
-
-
 sub munge_files {
     my $self = shift;
     $self->munge_file($_) for @{ $self->found_files };
@@ -30,12 +29,12 @@ sub munge_files {
 
 sub munge_file {
     my $self = shift;
-    my $file = shift;
+    my $filename = shift;
 
-    my $content = $file->content;
+    my $content = $filename->content;
     my $re = $self->filepattern;
     if($content =~ m{^ # \s* EXAMPLE: \s* ($re):(.*) $}x) {
-        my $file = $1;
+        my $filename = $1;
         my $what = $2;
         $what =~ s{ }{}g;
         $what =~ s{,,+}{,}g;
@@ -67,6 +66,7 @@ sub munge_file {
         my $structure = MojoX::CustomTemplateFileParser->new( path => path($self->directory)->child($filename)->absolute )->parse->structure;
         use Data::Dumper;
         warn $structure;
+    }
 }
 
 1;
@@ -114,7 +114,7 @@ Source files looks like this:
         %= link_to 'The example 3' => ['http://www.perl.org/']
     --t--
     --e--
-        <a href="http://www.perl.org/">Perl</a>    
+        <a href="http://www.perl.org/">Perl</a>
     --e--
 
 This is a test block. One file can have many test blocks.
