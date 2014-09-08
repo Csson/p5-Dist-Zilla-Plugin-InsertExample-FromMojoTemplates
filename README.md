@@ -2,6 +2,10 @@
 
 Dist::Zilla::Plugin::InsertExample::FromMojoTemplate - Creates POD examples from custom [Mojolicious](https://metacpan.org/pod/Mojolicious) templates.
 
+<div>
+    <p><a style="float: left;" href="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates"><img src="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates.svg?branch=master">&nbsp;</a>
+</div>
+
 # SYNOPSIS
 
     ; In dist.ini
@@ -88,6 +92,6 @@ it under the same terms as Perl itself.
 
 Hey! **The above document had some coding errors, which are explained below:**
 
-- Around line 30:
+- Around line 32:
 
     Unterminated B<...> sequence
