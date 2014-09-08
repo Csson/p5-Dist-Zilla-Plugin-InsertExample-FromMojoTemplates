@@ -1,0 +1,7 @@
+/Dist-Zilla-Plugin-InsertExample-FromMojoTemplate-*
+/.build
+/_build*
+/Build
+MYMETA.*
+!META.json
+/.prove
