@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Dist-Zilla-Plugin-InsertExample-FromMojoTemplate",
+   "name" : "Dist-Zilla-Plugin-InsertExample-FromMojoTemplates",
    "no_index" : {
       "directory" : [
          "t",
@@ -62,7 +62,7 @@
          "web" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates"
       }
    },
-   "version" : "0.01.00",
+   "version" : "0.01.01",
    "x_contributors" : [
       "Erik Carlsson <info@code301.com>"
    ]
