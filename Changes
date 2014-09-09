@@ -10,6 +10,7 @@ Revision history for Dist-Zilla-Plugin-InsertExample-FromMojoTemplate
  [Enhancements]
 
  [Meta]
+ - Fix wrong name
 
  [New Features]
 
