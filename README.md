@@ -1,6 +1,6 @@
 # NAME
 
-Dist::Zilla::Plugin::InsertExample::FromMojoTemplate - Creates POD examples from custom [Mojolicious](https://metacpan.org/pod/Mojolicious) templates.
+Dist::Zilla::Plugin::InsertExample::FromMojoTemplates - Creates POD examples from custom [Mojolicious](https://metacpan.org/pod/Mojolicious) templates.
 
 <div>
     <p><a style="float: left;" href="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates"><img src="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates.svg?branch=master">&nbsp;</a>
@@ -9,13 +9,13 @@ Dist::Zilla::Plugin::InsertExample::FromMojoTemplate - Creates POD examples from
 # SYNOPSIS
 
     ; In dist.ini
-    [InsertExample::FromMojoTemplate]
+    [InsertExample::FromMojoTemplates]
     directory = examples/source
     filepattern = ^\w+-\d+\.mojo$
 
 # DESCRIPTION
 
-Dist::Zilla::Plugin::InsertExample::FromMojoTemplate inserts examples from [MojoX::CustomTemplateFileParser](https://metacpan.org/pod/MojoX::CustomTemplateFileParser) type files into POD.
+Dist::Zilla::Plugin::InsertExample::FromMojoTemplates inserts examples from [MojoX::CustomTemplateFileParser](https://metacpan.org/pod/MojoX::CustomTemplateFileParser) type files into POD.
 Together with [Dist::Zilla::Plugin::Test::CreateFromMojo](https://metacpan.org/pod/Dist::Zilla::Plugin::Test::CreateFromMojo) this produces examples in POD from the same source that creates the tests.
 The purpose is to help develop tag helpers for [Mojolicious](https://metacpan.org/pod/Mojolicious).
 
@@ -32,6 +32,18 @@ Where DZP::IE::FMT should look for source files.
 Default: `^\w+-\d+\.mojo$`
 
 Look for files that matches a certain pattern.
+
+**`make_examples`**
+
+Default: `1`
+
+If true, will create html files in the chosen directory.
+
+**`example_directory`**
+
+Default: `examples`
+
+The directory for html files.
 
 ## USAGE
 
@@ -53,6 +65,8 @@ In your pod:
 
     # EXAMPLE: filename.mojo:all
 
+    # EXAMPLE: filename.mojo:examples
+
 **`all`**
 
 Adds all examples in the source file. `all` can be used by itself or combined with exclusion commands.
@@ -72,6 +86,10 @@ Excludes example `5` from the previous range.
 **`!22-26`**
 
 Excludes examples numbered `22-26` from the previous range. If an example has been excluded it can't be included later. Exclusions are final.
+
+**`examples`**
+
+Includes all tests marked `==test example==` in the source file. Exclusion works as with `all`.
 
 # AUTHOR
 
