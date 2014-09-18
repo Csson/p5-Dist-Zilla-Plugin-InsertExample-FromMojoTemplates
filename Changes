@@ -10,6 +10,7 @@ Revision history for Dist-Zilla-Plugin-InsertExample-FromMojoTemplates
  [Enhancements]
 
  [Meta]
+ - Fix missing prereqs.
 
  [New Features]
 
