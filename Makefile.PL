@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-
+use 5.010001;
 
 use ExtUtils::MakeMaker;
 
@@ -14,6 +14,7 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "Dist-Zilla-Plugin-InsertExample-FromMojoTemplates",
   "LICENSE" => "perl",
+  "MIN_PERL_VERSION" => "5.010001",
   "NAME" => "Dist::Zilla::Plugin::InsertExample::FromMojoTemplates",
   "PREREQ_PM" => {
     "Dist::Zilla" => "5.000",

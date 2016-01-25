@@ -104,7 +104,8 @@
             "MojoX::CustomTemplateFileParser" : "0.09",
             "Moose" : "2.0000",
             "Path::Tiny" : "0.050",
-            "namespace::autoclean" : "0.18"
+            "namespace::autoclean" : "0.18",
+            "perl" : "5.010001"
          }
       },
       "test" : {
