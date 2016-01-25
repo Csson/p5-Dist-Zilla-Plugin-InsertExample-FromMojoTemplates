@@ -9,14 +9,21 @@ Revision history for Dist-Zilla-Plugin-InsertExample-FromMojoTemplates
 
  [Enhancements]
 
- [Other Changes]
-  - Deprecated.
-  - Rebuilt with current Dist::Iller::Config::Author::CSSON.
-
  [New Features]
 
+ [Other Changes]
+
  [Requirements]
-  - namespace::sweep changed to namespace::autoclean.
+
+ [Testing]
+
+0.0301 2016-01-25T15:52:05Z UTC
+ [Other Changes]
+ - Deprecated.
+ - Rebuilt with current Dist::Iller::Config::Author::CSSON.
+
+ [Requirements]
+ - namespace::sweep changed to namespace::autoclean.
 
 0.0300 Unreleased
  - Version format change.
