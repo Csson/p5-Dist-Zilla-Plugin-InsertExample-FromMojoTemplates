@@ -1,10 +1,10 @@
 {
-   "abstract" : "Creates POD examples from custom L<Mojolicious> templates.",
+   "abstract" : "Creates POD examples from a custom template format (deprecated)",
    "author" : [
-      "Erik Carlsson <csson@cpan.org>"
+      "Erik Carlsson <info@code301.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 5.031, Dist::Milla version v1.0.9, CPAN::Meta::Converter version 2.143240",
+   "generated_by" : "Dist::Zilla version 5.043, Dist::Iller version 0.1204, CPAN::Meta::Converter version 2.143240",
    "license" : [
       "perl_5"
    ],
@@ -15,48 +15,101 @@
    "name" : "Dist-Zilla-Plugin-InsertExample-FromMojoTemplates",
    "no_index" : {
       "directory" : [
-         "t",
-         "xt",
+         "eg",
+         "examples",
          "inc",
          "share",
-         "eg",
-         "examples"
+         "t",
+         "xt"
       ]
    },
    "prereqs" : {
-      "build" : {
-         "requires" : {
-            "Test::EOL" : "0",
-            "Test::Pod" : "0"
-         }
-      },
       "configure" : {
          "requires" : {
-            "Module::Build::Tiny" : "0.039"
+            "ExtUtils::MakeMaker" : "0"
          }
       },
       "develop" : {
          "requires" : {
-            "Test::EOL" : "0",
-            "Test::More" : "0",
-            "Test::Pod" : "1.41"
-         }
-      },
-      "runtime" : {
-         "requires" : {
-            "Dist::Zilla" : "5.000",
-            "File::Find::Rule" : "0.33",
-            "MojoX::CustomTemplateFileParser" : "0.09",
-            "Moose" : "2.00",
-            "Path::Tiny" : "0.050",
-            "namespace::sweep" : "0.006",
-            "perl" : "v5.14.0"
+            "Dist::Iller::Config::Author::CSSON" : "0",
+            "Dist::Zilla::Plugin::CheckChangesHasContent" : "0",
+            "Dist::Zilla::Plugin::Clean" : "0",
+            "Dist::Zilla::Plugin::ConfirmRelease" : "0",
+            "Dist::Zilla::Plugin::CopyFilesFromBuild" : "0",
+            "Dist::Zilla::Plugin::Deprecated" : "0",
+            "Dist::Zilla::Plugin::DistIller::MetaGeneratedBy" : "0",
+            "Dist::Zilla::Plugin::ExecDir" : "0",
+            "Dist::Zilla::Plugin::Git::Check" : "0",
+            "Dist::Zilla::Plugin::Git::Contributors" : "0",
+            "Dist::Zilla::Plugin::Git::GatherDir" : "0",
+            "Dist::Zilla::Plugin::Git::Push" : "0",
+            "Dist::Zilla::Plugin::Git::Tag" : "0",
+            "Dist::Zilla::Plugin::GithubMeta" : "0",
+            "Dist::Zilla::Plugin::InstallRelease" : "0",
+            "Dist::Zilla::Plugin::License" : "0",
+            "Dist::Zilla::Plugin::MakeMaker" : "0",
+            "Dist::Zilla::Plugin::Manifest" : "0",
+            "Dist::Zilla::Plugin::ManifestSkip" : "0",
+            "Dist::Zilla::Plugin::MetaJSON" : "0",
+            "Dist::Zilla::Plugin::MetaNoIndex" : "0",
+            "Dist::Zilla::Plugin::MetaProvides::Class" : "0",
+            "Dist::Zilla::Plugin::MetaProvides::Package" : "0",
+            "Dist::Zilla::Plugin::MetaYAML" : "0",
+            "Dist::Zilla::Plugin::NextRelease" : "0",
+            "Dist::Zilla::Plugin::NextVersion::Semantic" : "0",
+            "Dist::Zilla::Plugin::OurPkgVersion" : "0",
+            "Dist::Zilla::Plugin::PodSyntaxTests" : "0",
+            "Dist::Zilla::Plugin::PodWeaver" : "0",
+            "Dist::Zilla::Plugin::PodnameFromClassname" : "0",
+            "Dist::Zilla::Plugin::Prereqs" : "0",
+            "Dist::Zilla::Plugin::Prereqs::Plugins" : "0",
+            "Dist::Zilla::Plugin::PreviousVersion::Changelog" : "0",
+            "Dist::Zilla::Plugin::Readme" : "0",
+            "Dist::Zilla::Plugin::ReadmeAnyFromPod" : "0",
+            "Dist::Zilla::Plugin::ReversionOnRelease" : "0",
+            "Dist::Zilla::Plugin::RunExtraTests" : "0",
+            "Dist::Zilla::Plugin::ShareDir" : "0",
+            "Dist::Zilla::Plugin::Test::Compile" : "0",
+            "Dist::Zilla::Plugin::Test::ReportPrereqs" : "0",
+            "Dist::Zilla::Plugin::TestRelease" : "0",
+            "Dist::Zilla::Plugin::TravisYML" : "0",
+            "Dist::Zilla::Plugin::UploadToCPAN" : "0",
+            "Pod::Elemental::Transformer::List" : "0",
+            "Pod::Weaver::Plugin::SingleEncoding" : "0",
+            "Pod::Weaver::Plugin::Transformer" : "0",
+            "Pod::Weaver::PluginBundle::CorePrep" : "0",
+            "Pod::Weaver::Section::Authors" : "0",
+            "Pod::Weaver::Section::Badges" : "0",
+            "Pod::Weaver::Section::Collect" : "0",
+            "Pod::Weaver::Section::Generic" : "0",
+            "Pod::Weaver::Section::Homepage::DefaultCPAN" : "0",
+            "Pod::Weaver::Section::Leftovers" : "0",
+            "Pod::Weaver::Section::Legal" : "0",
+            "Pod::Weaver::Section::Name" : "0",
+            "Pod::Weaver::Section::Region" : "0",
+            "Pod::Weaver::Section::Source::DefaultGitHub" : "0",
+            "Pod::Weaver::Section::Version" : "0",
+            "Test::Pod" : "1.41",
+            "Test::Warnings" : "0"
          }
       },
       "test" : {
+         "recommends" : {
+            "CPAN::Meta" : "2.120900"
+         },
          "requires" : {
+            "ExtUtils::MakeMaker" : "0",
+            "File::Spec" : "0",
+            "IO::Handle" : "0",
+            "IPC::Open3" : "0",
             "Test::More" : "0.96"
          }
+      }
+   },
+   "provides" : {
+      "Dist::Zilla::Plugin::InsertExample::FromMojoTemplates" : {
+         "file" : "lib/Dist/Zilla/Plugin/InsertExample/FromMojoTemplates.pm",
+         "version" : "0.0301"
       }
    },
    "release_status" : "stable",
@@ -64,16 +117,14 @@
       "bugtracker" : {
          "web" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates/issues"
       },
-      "homepage" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates",
+      "homepage" : "https://metacpan.org/release/Dist-Zilla-Plugin-InsertExample-FromMojoTemplates",
       "repository" : {
          "type" : "git",
          "url" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates.git",
          "web" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates"
       }
    },
-   "version" : "0.02.02",
-   "x_contributors" : [
-      "Erik Carlsson <info@code301.com>"
-   ]
+   "version" : "0.0301",
+   "x_deprecated" : 1
 }
 

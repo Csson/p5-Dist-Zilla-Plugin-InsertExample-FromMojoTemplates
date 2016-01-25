@@ -1,10 +1,12 @@
 # NAME
 
-Dist::Zilla::Plugin::InsertExample::FromMojoTemplates - Creates POD examples from custom [Mojolicious](https://metacpan.org/pod/Mojolicious) templates.
+Dist::Zilla::Plugin::InsertExample::FromMojoTemplates - Creates POD examples from a custom template format (deprecated)
 
-<div>
-    <p><a style="float: left;" href="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates"><img src="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates.svg?branch=master">&nbsp;</a>
-</div>
+![Requires Perl unknown](https://img.shields.io/badge/perl-unknown-brightgreen.svg) [![Travis status](https://api.travis-ci.org/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates.svg?branch=master)](https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates) 
+
+# VERSION
+
+Version 0.0301, released 2016-01-25.
 
 # SYNOPSIS
 
@@ -14,6 +16,8 @@ Dist::Zilla::Plugin::InsertExample::FromMojoTemplates - Creates POD examples fro
     filepattern = ^\w+-\d+\.mojo$
 
 # DESCRIPTION
+
+**Deprecated**. See [Pod::Elemental::Transformer::Stenciller](https://metacpan.org/pod/Pod::Elemental::Transformer::Stenciller) instead.
 
 Dist::Zilla::Plugin::InsertExample::FromMojoTemplates inserts examples from [MojoX::CustomTemplateFileParser](https://metacpan.org/pod/MojoX::CustomTemplateFileParser) type files into POD.
 Together with [Dist::Zilla::Plugin::Test::CreateFromMojo](https://metacpan.org/pod/Dist::Zilla::Plugin::Test::CreateFromMojo) this produces examples in POD from the same source that creates the tests.
@@ -91,17 +95,25 @@ Excludes examples numbered `22-26` from the previous range. If an example has be
 
 Includes all tests marked `==test example==` in the source file. Exclusion works as with `all`.
 
+# SEE ALSO
+
+The successor to this module is [Pod::Elemental::Transformer::Stenciller](https://metacpan.org/pod/Pod::Elemental::Transformer::Stenciller).
+
+# SOURCE
+
+[https://github.com/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates](https://github.com/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates)
+
+# HOMEPAGE
+
+[https://metacpan.org/release/Dist-Zilla-Plugin-InsertExample-FromMojoTemplates](https://metacpan.org/release/Dist-Zilla-Plugin-InsertExample-FromMojoTemplates)
+
 # AUTHOR
 
 Erik Carlsson <info@code301.com>
 
-# COPYRIGHT
+# COPYRIGHT AND LICENSE
 
-Copyright 2014- Erik Carlsson
+This software is copyright (c) 2016 by Erik Carlsson.
 
-# LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-# SEE ALSO
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
