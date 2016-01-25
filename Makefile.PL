@@ -15,7 +15,18 @@ my %WriteMakefileArgs = (
   "DISTNAME" => "Dist-Zilla-Plugin-InsertExample-FromMojoTemplates",
   "LICENSE" => "perl",
   "NAME" => "Dist::Zilla::Plugin::InsertExample::FromMojoTemplates",
-  "PREREQ_PM" => {},
+  "PREREQ_PM" => {
+    "Dist::Zilla" => "5.000",
+    "Dist::Zilla::File::InMemory" => 0,
+    "Dist::Zilla::Role::FileFinderUser" => 0,
+    "Dist::Zilla::Role::FileGatherer" => 0,
+    "Dist::Zilla::Role::FileMunger" => 0,
+    "File::Find::Rule" => "0.33",
+    "MojoX::CustomTemplateFileParser" => "0.09",
+    "Moose" => "2.0000",
+    "Path::Tiny" => "0.050",
+    "namespace::autoclean" => "0.18"
+  },
   "TEST_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
     "File::Spec" => 0,
@@ -31,11 +42,21 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "Dist::Zilla" => "5.000",
+  "Dist::Zilla::File::InMemory" => 0,
+  "Dist::Zilla::Role::FileFinderUser" => 0,
+  "Dist::Zilla::Role::FileGatherer" => 0,
+  "Dist::Zilla::Role::FileMunger" => 0,
   "ExtUtils::MakeMaker" => 0,
+  "File::Find::Rule" => "0.33",
   "File::Spec" => 0,
   "IO::Handle" => 0,
   "IPC::Open3" => 0,
-  "Test::More" => "0.96"
+  "MojoX::CustomTemplateFileParser" => "0.09",
+  "Moose" => "2.0000",
+  "Path::Tiny" => "0.050",
+  "Test::More" => "0.96",
+  "namespace::autoclean" => "0.18"
 );
 
 
