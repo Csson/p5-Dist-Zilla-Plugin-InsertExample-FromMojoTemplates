@@ -4,9 +4,13 @@ use strict;
 use warnings;
 use 5.10.1;
 
+# VERSION
+# ABSTRACT: Creates POD examples from a custom template format (deprecated)
+
 use File::Find::Rule;
 use MojoX::CustomTemplateFileParser;
 use Moose;
+use namespace::autoclean;
 use Path::Tiny;
 use Dist::Zilla::File::InMemory;
 
@@ -140,15 +144,8 @@ sub munge_file {
 __PACKAGE__->meta->make_immutable;
 
 1;
+
 __END__
-
-=encoding utf-8
-
-=head1 NAME
-
-Dist::Zilla::Plugin::InsertExample::FromMojoTemplates - Creates POD examples from custom L<Mojolicious> templates.
-
-=for html <p><a style="float: left;" href="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates"><img src="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-InsertExample-FromMojoTemplates.svg?branch=master">&nbsp;</a>
 
 =head1 SYNOPSIS
 
@@ -158,6 +155,8 @@ Dist::Zilla::Plugin::InsertExample::FromMojoTemplates - Creates POD examples fro
   filepattern = ^\w+-\d+\.mojo$
 
 =head1 DESCRIPTION
+
+B<Deprecated>. See L<Pod::Elemental::Transformer::Stenciller> instead.
 
 Dist::Zilla::Plugin::InsertExample::FromMojoTemplates inserts examples from L<MojoX::CustomTemplateFileParser> type files into POD.
 Together with L<Dist::Zilla::Plugin::Test::CreateFromMojo> this produces examples in POD from the same source that creates the tests.
@@ -235,20 +234,8 @@ B<C<examples>>
 
 Includes all tests marked C<==test example==> in the source file. Exclusion works as with C<all>.
 
-
-=head1 AUTHOR
-
-Erik Carlsson E<lt>info@code301.comE<gt>
-
-=head1 COPYRIGHT
-
-Copyright 2014- Erik Carlsson
-
-=head1 LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
 =head1 SEE ALSO
+
+The successor to this module is L<Pod::Elemental::Transformer::Stenciller>.
 
 =cut
